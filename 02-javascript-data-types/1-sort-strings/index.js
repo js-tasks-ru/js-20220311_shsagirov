@@ -5,5 +5,9 @@
  * @returns {string[]}
  */
 export function sortStrings(arr, param = 'asc') {
-
+  const increment = param.toLowerCase() === 'asc' ? 1 : -1;
+  return [...arr].sort((str1, str2) => str1
+                                         .localeCompare(str2,
+                                                        'ru',
+                                                        {sensitivity: 'variant', caseFirst: 'upper'}) * increment);
 }
